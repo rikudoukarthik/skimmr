@@ -1,3 +1,5 @@
+#' EBD parameters
+#'
 #' Get date parameters based on current or specified date
 #'
 #' @param date_real a date string

@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_param.R
 \name{get_param}
 \alias{get_param}
-\title{Get date parameters based on current or specified date}
+\title{EBD parameters}
 \usage{
 get_param(
   date_real = NULL,
