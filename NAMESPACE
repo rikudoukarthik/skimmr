@@ -3,6 +3,5 @@
 export("%>%")
 export(get_param)
 export(read.ebd)
-export(testfn)
 importFrom(magrittr,"%>%")
 importFrom(utils,read.delim)
