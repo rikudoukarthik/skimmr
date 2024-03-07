@@ -2,7 +2,7 @@
 #'
 #' Reads a .txt EBD file and creates a data frame from it, with cases corresponding to
 #' lines and variables to fields in the file. This function is a wrapper around
-#' `utils::read.delim()`, which is considerably faster than `readr::read_delim()` used in
+#' `utils::read.delim()`, which is considerably faster than the `readr::read_delim()` used in
 #' `auk::read_ebd()`. Moreover, unlike the latter which uses snake case for column names,
 #' this function uses uppercase with period separators.
 #'

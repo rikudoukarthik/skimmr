@@ -3,5 +3,6 @@
 export("%>%")
 export(get_param)
 export(read.ebd)
+export(unzip_ebd)
 importFrom(magrittr,"%>%")
 importFrom(utils,read.delim)

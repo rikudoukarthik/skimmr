@@ -20,7 +20,7 @@ A data frame
 \description{
 Reads a .txt EBD file and creates a data frame from it, with cases corresponding to
 lines and variables to fields in the file. This function is a wrapper around
-\code{utils::read.delim()}, which is considerably faster than \code{readr::read_delim()} used in
+\code{utils::read.delim()}, which is considerably faster than the \code{readr::read_delim()} used in
 \code{auk::read_ebd()}. Moreover, unlike the latter which uses snake case for column names,
 this function uses uppercase with period separators.
 }
