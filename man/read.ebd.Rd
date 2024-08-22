@@ -2,32 +2,49 @@
 % Please edit documentation in R/read_ebd.R
 \name{read.ebd}
 \alias{read.ebd}
-\title{EBD Input}
+\alias{read.mydata}
+\title{Load eBird data files}
 \usage{
-read.ebd(ebd_path, cols_sel = "all", cols_print_only = FALSE)
+read.ebd(path, cols_sel = "all", cols_print_only = FALSE)
+
+read.mydata(
+  path = "MyEBirdData.csv",
+  cols_sel = "all",
+  cols_print_only = FALSE,
+  cols_style_ebd = TRUE
+)
 }
 \arguments{
-\item{ebd_path}{character; the path to the downloaded EBD .txt file}
+\item{path}{character; the path to the downloaded EBD .txt file}
 
 \item{cols_sel}{character; vector of column names to be imported from the dataset}
 
 \item{cols_print_only}{logical; whether or not to only print the full set of column
 names}
+
+\item{cols_style_ebd}{logical; if \code{TRUE} (default), change column names in My Data to uppercase
+and separated by period (COLUMN.STYLE), as in \code{read.ebd()}}
 }
 \value{
-A data frame
+A data frame (\code{cols_print_only == FALSE}), or a character vector of column names
+(\code{cols_print_only == TRUE})
 }
 \description{
-Reads a .txt EBD file and creates a data frame from it, with cases corresponding to
-lines and variables to fields in the file. This function is a wrapper around
-\code{utils::read.delim()}, which is considerably faster than the \code{readr::read_delim()} used in
-\code{auk::read_ebd()}. Moreover, unlike the latter which uses snake case for column names,
-this function uses uppercase with period separators.
-}
-\details{
-Since EBD contains several columns, which may not all be required for a given usecase,
+Reads a .txt eBird data file and creates a data frame from it, with cases corresponding to
+lines (rows) and variables to fields (columns) in the file.
+
+The most commonly used types of eBird data files are the eBird Basic Dataset (EBD;
+which may contain three subtypes of files) and the My Data download
+(which contains all data associated with a specific eBird account). The two differ in
+their download file type, column naming format, available columns, etc.
+
+\code{read.ebd} and \code{read.mydata} import the EBD and My Data files respectively. Since EBD contains several columns, which may not all be required for a given usecase,
 \code{cols_sel} can be used to import only a subset of the columns. To see the list of all
-columns names to choose from, run \verb{read.ebd(ebd_path, cols_print_only = TRUE}.
+columns names to choose from, run \code{read.ebd(ebd_path, cols_print_only = TRUE)}.
+
+This function is a wrapper around \code{utils::read.delim()}, which is considerably faster
+than the \code{readr::read_delim()} used in \code{auk::read_ebd()}. Moreover, unlike the latter
+which uses snake case for column names, this function uses uppercase with period separators.
 }
 \examples{
 # to see list of column names before choosing
