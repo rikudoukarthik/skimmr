@@ -1,4 +1,6 @@
-#' Unzip EBD file
+#' Unzip eBird Basic Dataset (EBD) file
+#'
+#' @description
 #'
 #' Unzips an EBD data download file, and saves any of three selected data files: main dataset
 #' of vetted observation records, sampling event data (SED), and unvetted records.
@@ -12,10 +14,9 @@
 #' @param dir_name character; specify subfolder name of zip file (if exists), without
 #' the trailing slash
 #'
-#' @return N/A. Specified files are unzipped and saved in the local directory.
+#' @return Does not return output. Specified files are unzipped and saved in the local directory.
 #' @export
 #'
-#' @examples
 unzip_ebd <- function(dataset_str = "ebd_IN_unv_smp_rel", unzip_which = c("ebd", "sed"),
                       dir_name = NULL) {
 

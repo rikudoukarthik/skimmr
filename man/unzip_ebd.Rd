@@ -2,7 +2,7 @@
 % Please edit documentation in R/unzip_ebd.R
 \name{unzip_ebd}
 \alias{unzip_ebd}
-\title{Unzip EBD file}
+\title{Unzip eBird Basic Dataset (EBD) file}
 \usage{
 unzip_ebd(
   dataset_str = "ebd_IN_unv_smp_rel",
@@ -11,7 +11,7 @@ unzip_ebd(
 )
 }
 \arguments{
-\item{dataset_str}{character; the string in the file name of the data download}
+\item{dataset_str}{character; the string in the file name of the data download, ending with \verb{_rel}}
 
 \item{unzip_which}{character; vector listing which of "ebd", "sed" and "unv" to unzip}
 
@@ -19,13 +19,12 @@ unzip_ebd(
 the trailing slash}
 }
 \value{
-N/A. Specified files are unzipped and saved in the local directory.
+Does not return output. Specified files are unzipped and saved in the local directory.
 }
 \description{
 Unzips an EBD data download file, and saves any of three selected data files: main dataset
 of vetted observation records, sampling event data (SED), and unvetted records.
-}
-\details{
+
 \code{dataset_str} varies with options selected when downloading the data; it may contain
 district-level admin. codes, or species codes, or tags indicating whether or not SED
 and unvetted data are included.
