@@ -11,5 +11,10 @@ Functions for various data sorting, processing and analysis tasks of citizen sci
 \author{
 \strong{Maintainer}: Karthik Thrikkadeeri \email{rikudoukarthik@gmail.com} (\href{https://orcid.org/0000-0003-2863-5879}{ORCID})
 
+Other contributors:
+\itemize{
+  \item Ashwin Viswanathan \email{ashwinv2005@gmail.com} (\href{https://orcid.org/0000-0002-1605-0614}{ORCID}) [contributor]
+}
+
 }
 \keyword{internal}

@@ -1,10 +1,14 @@
 Package: skimmr
 Title: Working with eBird data made easy
 Version: 0.0.0.9005
-Authors@R: 
-    person(given = "Karthik", family = "Thrikkadeeri", , "rikudoukarthik@gmail.com", 
-           role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0003-2863-5879"))
+Authors@R: c(
+    person(given = "Karthik", family = "Thrikkadeeri", , 
+           "rikudoukarthik@gmail.com", 
+           role = c("aut", "cre"), comment = c(ORCID = "0000-0003-2863-5879")),
+    person(given = "Ashwin", family = "Viswanathan", , 
+           "ashwinv2005@gmail.com", 
+           role = "ctb", comment = c(ORCID = "0000-0002-1605-0614"))
+  )
 Description: Functions for various data sorting, processing and analysis tasks of citizen science practitioners using eBird data.
 License: MIT + file LICENSE
 Encoding: UTF-8
