@@ -17,7 +17,8 @@ Imports:
     magrittr,
     glue,
     dplyr,
-    stringr
+    stringr,
+    rlang
 Depends: 
     R (>= 2.10)
 LazyData: true
