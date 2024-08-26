@@ -14,6 +14,8 @@ test_that("Error catches work", {
                  dplyr::select(-ALL.SPECIES.REPORTED) %>%
                  filter_eligible(),
                "required columns")
+  expect_error(dummy_ebd(100) %>% filter_eligible(standard = "iNat"),
+               "standard eligibility criterion")
 
   # warnings
   expect_warning(dummy_ebd(100) %>% filter_eligible("bci", complete = FALSE))

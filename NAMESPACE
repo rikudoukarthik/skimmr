@@ -2,6 +2,7 @@
 
 export("%>%")
 export(cols_to_ebd)
+export(filter_eligible)
 export(get_param)
 export(read.ebd)
 export(unzip_ebd)
