@@ -1,10 +1,11 @@
 Package: skimmr
-Title: Bird Count India Analyses Using eBird Data
+Title: Working with eBird data made easy
 Version: 0.0.0.9004
 Authors@R: 
-    person("Karthik", "Thrikkadeeri", , "rikudoukarthik@gmail.com", role = c("aut", "cre"),
+    person(given = "Karthik", family = "Thrikkadeeri", , "rikudoukarthik@gmail.com", 
+           role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-2863-5879"))
-Description: Functions for various data sorting, processing and analysis tasks of Bird Count India using eBird data.
+Description: Functions for various data sorting, processing and analysis tasks of citizen science practitioners using eBird data.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
