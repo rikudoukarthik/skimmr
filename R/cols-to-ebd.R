@@ -36,7 +36,7 @@ cols_to_ebd <- function(data, type = "mydata") {
         CURRENT == "Time" ~ "TIME.OBSERVATION.STARTED",
         CURRENT == "Protocol" ~ "PROTOCOL.TYPE",
         CURRENT == "Duration (Min)" ~ "DURATION.MINUTES",
-        CURRENT == "All Obs Reported" ~ "ALL.OBS.REPORTED",
+        CURRENT == "All Obs Reported" ~ "ALL.SPECIES.REPORTED",
         CURRENT == "Distance Traveled (km)" ~ "EFFORT.DISTANCE.KM",
         CURRENT == "Area Covered (ha)" ~ "EFFORT.AREA.HA",
         CURRENT == "Number of Observers" ~ "NUMBER.OBSERVERS",

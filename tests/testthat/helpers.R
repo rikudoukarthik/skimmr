@@ -15,7 +15,7 @@ remove_param <- function() {
 dummy_mydata <- function(nrows = 5) {
 
   dummy <- dplyr::tibble(
-    `Submission ID` = paste0("S", sample(10000000:99999999, 1)) %>% rep(nrows),
+    `Submission ID` = paste0("S", sample(10000000:99999999, nrows)),
     `Common Name` = sample(india_checklist$`English Name`, replace = TRUE, size = nrows),
     # won't match
     `Scientific Name` = sample(india_checklist$`Scientific Name`, replace = TRUE, size = nrows),
@@ -52,6 +52,17 @@ dummy_mydata <- function(nrows = 5) {
                                   replace = TRUE, size = nrows),
 
   )
+
+  return(dummy)
+
+}
+
+# create dummy EBD ------------------------------------------------------------------
+
+dummy_ebd <- function(nrows = 5) {
+
+  dummy <- dummy_mydata(nrows) %>%
+    cols_to_ebd()
 
   return(dummy)
 
