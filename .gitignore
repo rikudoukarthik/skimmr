@@ -3,3 +3,11 @@
 .Rdata
 .httr-oauth
 .DS_Store
+
+data-raw/rebird_token.R
+
+
+# temporary
+Boundaries/
+IndiaBoundary/
+draft_shapefiles.R
