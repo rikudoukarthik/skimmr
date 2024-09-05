@@ -5,7 +5,7 @@
 #' can be used to standardise the column names to match the default style as in
 #' `read.ebd()`, i.e., fully uppercase and with periods replacing spaces.
 #'
-#' @param data eBird data object
+#' @param data eBird My Data object, or vector of column names in eBird My Data
 #' @param type character; "mydata" if personal My Data download
 #'
 #' @return An updated data frame with new column names, and some columns changed:
@@ -14,7 +14,12 @@
 
 cols_to_ebd <- function(data, type = "mydata") {
 
-  cols_df <- dplyr::tibble(CURRENT = names(data))
+  # different behaviour for input dataframe and vector
+  cols_df <- if (is.data.frame(data)) {
+    dplyr::tibble(CURRENT = names(data))
+  } else if (is.character(data)) {
+    dplyr::tibble(CURRENT = data)
+  }
 
   if (type == "mydata") {
 
@@ -49,24 +54,34 @@ cols_to_ebd <- function(data, type = "mydata") {
 
   }
 
+  # warning if input has invalid column name
+  if (anyNA(cols_df$NEW)) {
+    warning("Data contains unrecognised column name(s), for which returning NA.")
+  }
+
 
   # update column names
-  names(data) <- cols_df$NEW
+  if (is.data.frame(data)) {
 
+    names(data) <- cols_df$NEW
 
-  # update columns having discrepancies between EBD and My Data
-  if (type == "mydata") {
-    data <- data %>%
-      dplyr::mutate(
-        PROTOCOL.TYPE = dplyr::case_when(
-          stringr::str_detect(PROTOCOL.TYPE, "Traveling") ~ "Traveling",
-          stringr::str_detect(PROTOCOL.TYPE, "Stationary ") ~ "Stationary ",
-          stringr::str_detect(PROTOCOL.TYPE, "Casual") ~ "Incidental",
-          stringr::str_detect(PROTOCOL.TYPE, "Historical") ~ "Historical"
-        ),
-        HAS.MEDIA = dplyr::case_when(is.na(HAS.MEDIA) ~ 0,
-                                     TRUE ~ 1)
-      )
+    # update columns having discrepancies between EBD and My Data
+    if (type == "mydata") {
+      data <- data %>%
+        dplyr::mutate(
+          PROTOCOL.TYPE = dplyr::case_when(
+            stringr::str_detect(PROTOCOL.TYPE, "Traveling") ~ "Traveling",
+            stringr::str_detect(PROTOCOL.TYPE, "Stationary ") ~ "Stationary ",
+            stringr::str_detect(PROTOCOL.TYPE, "Casual") ~ "Incidental",
+            stringr::str_detect(PROTOCOL.TYPE, "Historical") ~ "Historical"
+          ),
+          HAS.MEDIA = dplyr::case_when(is.na(HAS.MEDIA) ~ 0,
+                                       TRUE ~ 1)
+        )
+    }
+
+  } else {
+    data <- cols_df$NEW
   }
 
   return(data)
