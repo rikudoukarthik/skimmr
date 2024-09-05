@@ -45,8 +45,8 @@ read.ebd <- function(path, cols_sel = "all", cols_print_only = FALSE) {
                                       sep = "\t", header = TRUE, quote = "",
                                       stringsAsFactors = FALSE, na.strings = c("", " ", NA)))
 
-  if (cols_sel != "all") {
-    if (!cols_sel %in% cols_all) {
+  if (!identical(cols_sel, "all")) {
+    if (!all(cols_sel %in% cols_all)) {
       stop("Specified column name is invalid. Run read.ebd(., cols_print_only = TRUE) to see valid names.")
     }
   }
@@ -106,8 +106,8 @@ read.mydata <- function(path = "MyEBirdData.csv",
   cols_all <- names(mini_data)
 
 
-  if (cols_sel != "all") {
-    if (!cols_sel %in% cols_all) {
+  if (!identical(cols_sel, "all")) {
+    if (!all(cols_sel %in% cols_all)) {
       stop(paste("Specified column name is invalid. Run read.ebd(., cols_print_only = TRUE) to see valid names.",
                  "Also check input name is same style as output style (cols_style_ebd)."))
     }
@@ -129,7 +129,7 @@ read.mydata <- function(path = "MyEBirdData.csv",
                               show_col_types = FALSE) %>%
         suppressWarnings() # suppress parsing warnings
 
-      if (cols_sel != "all") {
+      if (!identical(cols_sel, "all")) {
 
         data <- data %>%
           {if (cols_style_ebd == TRUE) {
@@ -137,7 +137,7 @@ read.mydata <- function(path = "MyEBirdData.csv",
           } else {
             .
           }} %>%
-          dplyr::select(cols_sel)
+          dplyr::select(all_of(cols_sel))
 
     }
 

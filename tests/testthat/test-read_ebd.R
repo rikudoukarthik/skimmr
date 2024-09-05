@@ -59,10 +59,24 @@ test_that("cols_sel works", {
     col_to_sel
   )
 
-    col_to_sel <- "Common Name"
+  col_to_sel <- "Common Name"
   expect_equal(
     names(read.mydata(test_path("MyEBirdData.csv"), cols_print_only = FALSE, cols_style_ebd = FALSE,
                       cols_sel = col_to_sel)),
+    col_to_sel
+  )
+
+  # input > 1 column names to select
+  col_to_sel <- c("Common Name", "Submission ID")
+  expect_equal(
+    names(read.mydata(test_path("MyEBirdData.csv"), cols_print_only = FALSE, cols_style_ebd = FALSE,
+                      cols_sel = col_to_sel)),
+    col_to_sel
+  )
+  col_to_sel <- c("COMMON.NAME", "SAMPLING.EVENT.IDENTIFIER")
+  expect_equal(
+    names(read.ebd(test_path("test-ebd.txt"), cols_print_only = FALSE,
+                   cols_sel = col_to_sel)),
     col_to_sel
   )
 
