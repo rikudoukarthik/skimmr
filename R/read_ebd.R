@@ -51,7 +51,6 @@ read.ebd <- function(path, cols_sel = "all", cols_print_only = FALSE) {
   if (cols_print_only == TRUE) {
 
     print(cols_all)
-    return(cols_all) # also return to allow selection from vector
 
   } else {
 
@@ -78,6 +77,7 @@ read.ebd <- function(path, cols_sel = "all", cols_print_only = FALSE) {
 
 }
 
+
 #' @rdname read.ebd
 #' @format NULL
 #' @param cols_style_ebd logical; if `TRUE` (default), change column names in My Data to uppercase
@@ -86,9 +86,19 @@ read.ebd <- function(path, cols_sel = "all", cols_print_only = FALSE) {
 read.mydata <- function(path = "MyEBirdData.csv",
                         cols_sel = "all", cols_print_only = FALSE, cols_style_ebd = TRUE) {
 
-  cols_all <- names(utils::read.delim(pathnrows = 1,
-                                      sep = ",", header = TRUE, quote = "",
-                                      stringsAsFactors = FALSE, na.strings = c("", " ", NA)))
+  mini_data <- readr::read_csv(path, n_max = 1,
+                               col_names = TRUE, quote = "",
+                               na = c("", " ", NA),
+                               show_col_types = FALSE) %>%
+    suppressWarnings() # suppress parsing warnings
+
+  # change column name style if needed
+  if (cols_style_ebd == TRUE) {
+    mini_data <- cols_to_ebd(mini_data)
+  }
+
+  cols_all <- names(mini_data)
+
 
   # if needed, first see entire list of available columns from which selection can be
   # made later
@@ -96,24 +106,25 @@ read.mydata <- function(path = "MyEBirdData.csv",
   if (cols_print_only == TRUE) {
 
     print(cols_all)
-    return(cols_all) # also return to allow selection from vector
 
   } else {
 
-    if (identical(cols_sel, "all")) {
 
-      data <- utils::read.delim(path,
-                                sep = ",", header = TRUE, quote = "",
-                                stringsAsFactors = FALSE, na.strings = c("", " ", NA))
+      data <- readr::read_csv(path,
+                              col_names = TRUE, quote = "",
+                              na = c("", " ", NA),
+                              show_col_types = FALSE) %>%
+        suppressWarnings() # suppress parsing warnings
 
-    } else {
+      if (cols_sel != "all") {
 
-      cols_all[!(cols_all %in% cols_sel)] <- "NULL"
-      cols_all[cols_all %in% cols_sel] <- NA
-
-      data <- utils::read.delim(path, colClasses = cols_all,
-                                sep = ",", header = TRUE, quote = "",
-                                stringsAsFactors = FALSE, na.strings = c("", " ", NA))
+        data <- data %>%
+          {if (cols_style_ebd == TRUE) {
+            cols_to_ebd(.)
+          } else {
+            .
+          }} %>%
+          dplyr::select(cols_sel)
 
     }
 
