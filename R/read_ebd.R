@@ -45,6 +45,12 @@ read.ebd <- function(path, cols_sel = "all", cols_print_only = FALSE) {
                                       sep = "\t", header = TRUE, quote = "",
                                       stringsAsFactors = FALSE, na.strings = c("", " ", NA)))
 
+  if (cols_sel != "all") {
+    if (!cols_sel %in% cols_all) {
+      stop("Specified column name is invalid. Run read.ebd(., cols_print_only = TRUE) to see valid names.")
+    }
+  }
+
   # if needed, first see entire list of available columns from which selection can be
   # made later
 
@@ -84,7 +90,7 @@ read.ebd <- function(path, cols_sel = "all", cols_print_only = FALSE) {
 #'    and separated by period (COLUMN.STYLE), as in `read.ebd()`
 
 read.mydata <- function(path = "MyEBirdData.csv",
-                        cols_sel = "all", cols_print_only = FALSE, cols_style_ebd = TRUE) {
+                        cols_sel = "all", cols_print_only = FALSE, cols_style_ebd = FALSE) {
 
   mini_data <- readr::read_csv(path, n_max = 1,
                                col_names = TRUE, quote = "",
@@ -100,6 +106,14 @@ read.mydata <- function(path = "MyEBirdData.csv",
   cols_all <- names(mini_data)
 
 
+  if (cols_sel != "all") {
+    if (!cols_sel %in% cols_all) {
+      stop(paste("Specified column name is invalid. Run read.ebd(., cols_print_only = TRUE) to see valid names.",
+                 "Also check input name is same style as output style (cols_style_ebd)."))
+    }
+  }
+
+
   # if needed, first see entire list of available columns from which selection can be
   # made later
 
@@ -108,7 +122,6 @@ read.mydata <- function(path = "MyEBirdData.csv",
     print(cols_all)
 
   } else {
-
 
       data <- readr::read_csv(path,
                               col_names = TRUE, quote = "",

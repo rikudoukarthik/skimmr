@@ -68,6 +68,25 @@ test_that("cols_sel works", {
 
 })
 
+test_that("error catch for invalid column name input works", {
+
+  expect_error(read.ebd(test_path("test-ebd.txt"), cols_sel = "Common Name"),
+               "invalid")
+  expect_error(read.ebd(test_path("test-ebd.txt"), cols_sel = "INVALID.COLUMN"),
+               "invalid")
+
+  expect_error(read.mydata(test_path("MyEBirdData.csv"), cols_sel = "COMMON.NAME",
+                           cols_style_ebd = FALSE),
+               "invalid")
+  expect_error(read.mydata(test_path("MyEBirdData.csv"), cols_sel = "Common Name",
+                           cols_style_ebd = TRUE),
+               "invalid")
+  expect_error(read.mydata(test_path("MyEBirdData.csv"), cols_sel = "Invalid Column",
+                           cols_style_ebd = FALSE),
+               "invalid")
+
+})
+
 # c("LAST.EDITED.DATE","CATEGORY","COMMON.NAME","EXOTIC.CODE","OBSERVATION.COUNT",
 #   "BREEDING.CODE","STATE","STATE.CODE","COUNTY","COUNTY.CODE","LOCALITY","LOCALITY.ID",
 #   "LOCALITY.TYPE","LATITUDE","LONGITUDE","OBSERVATION.DATE","TIME.OBSERVATIONS.STARTED",
