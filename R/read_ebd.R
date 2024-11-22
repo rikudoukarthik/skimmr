@@ -31,9 +31,10 @@
 #'
 #' @examples
 #' # to see list of column names before choosing
-#' test1 <- c(SAMPLING.EVENT.IDENTIFIER = "S0000001", COMMON.NAME = "Indian Peafowl")
+#' test1 <- data.frame(SAMPLING.EVENT.IDENTIFIER = "S0000001", COMMON.NAME = "Indian Peafowl")
 #' tf <- tempfile()
-#' writeLines(test1, tf)
+#' write.table(test1, file = tf, col.names = TRUE, row.names = FALSE, sep = "\t",
+#'             quote = FALSE) # quote = TRUE surrounds column names by quotes
 #' read.ebd(tf, cols_print_only = TRUE)
 #'
 #' # select columns and import data
@@ -137,7 +138,7 @@ read.mydata <- function(path = "MyEBirdData.csv",
           } else {
             .
           }} %>%
-          dplyr::select(all_of(cols_sel))
+          dplyr::select(dplyr::all_of(cols_sel))
 
     }
 

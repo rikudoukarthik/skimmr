@@ -7,7 +7,7 @@
 cols_to_ebd(data, type = "mydata")
 }
 \arguments{
-\item{data}{eBird data object}
+\item{data}{eBird My Data object, or vector of column names in eBird My Data}
 
 \item{type}{character; "mydata" if personal My Data download}
 }

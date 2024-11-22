@@ -11,7 +11,7 @@ read.mydata(
   path = "MyEBirdData.csv",
   cols_sel = "all",
   cols_print_only = FALSE,
-  cols_style_ebd = TRUE
+  cols_style_ebd = FALSE
 )
 }
 \arguments{
@@ -48,9 +48,10 @@ which uses snake case for column names, this function uses uppercase with period
 }
 \examples{
 # to see list of column names before choosing
-test1 <- c(SAMPLING.EVENT.IDENTIFIER = "S0000001", COMMON.NAME = "Indian Peafowl")
+test1 <- data.frame(SAMPLING.EVENT.IDENTIFIER = "S0000001", COMMON.NAME = "Indian Peafowl")
 tf <- tempfile()
-writeLines(test1, tf)
+write.table(test1, file = tf, col.names = TRUE, row.names = FALSE, sep = "\t",
+            quote = FALSE) # quote = TRUE surrounds column names by quotes
 read.ebd(tf, cols_print_only = TRUE)
 
 # select columns and import data
