@@ -1,6 +1,11 @@
 # internal data objects are generated from different contexts
 # but sysdata.rda needs to be written at once because it gets overwritten
 
+require(dplyr)
+require(stringr)
+require(readxl)
+require(purrr)
+
 
 # india checklist citation
 india_checklist_citation <- readxl::read_xlsx("data-raw/india_checklist.xlsx", sheet = 1) %>%
@@ -29,7 +34,7 @@ soib_citation <- temp_web_env$Runtime$evaluate(
 soib_full <- readxl::excel_sheets("data-raw/soib.xlsx")[-1] %>% # exclude README sheet
   rlang::set_names() %>% # use sheet names as list names for reference
   purrr::map_dfr(~ readxl::read_excel("data-raw/soib.xlsx", sheet = .x) %>%
-                   dplyr::mutate(sheet_name = .x))
+                   dplyr::mutate(SOIB.MASK = .x))
 
 
 usethis::use_data(india_checklist_citation, soib_citation, soib_full,
