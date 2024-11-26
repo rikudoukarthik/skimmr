@@ -11,7 +11,7 @@
 #' @param mask character; a valid mask name
 #'
 #' @return A tibble. Please find info on descriptions of each variable in the
-#' source listed in the documentation for `soib`.
+#' source listed in the documentation for [soib].
 #'
 #' @export
 #'
