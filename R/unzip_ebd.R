@@ -29,7 +29,7 @@ unzip_ebd <- function(dataset_str = "ebd_IN_unv_smp_rel", unzip_which = c("ebd",
   # load EBD parameters of interest
   if (!exists("currel_month_lab", envir = .GlobalEnv) &
       !exists("currel_year", envir = .GlobalEnv)) {
-    stop("No information about EBD of interest. Load release info by running get_param().")
+    stop("No information about EBD of interest. Load release info by running ebird_rel_param().")
   }
 
 

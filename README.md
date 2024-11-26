@@ -28,6 +28,6 @@ This is a basic example which shows you how to solve a common problem:
 library(skimmr)
 
 # get parameters useful when manipulating eBird data (e.g., EBD), like dates
-get_param() 
+ebird_rel_param() 
 # saves real-time date, EBD current release date, EBD previous release date, and other associated values as objects in environment
 ```

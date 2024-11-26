@@ -1,5 +1,5 @@
 test_that("Basic params are saved to environment in default setting", {
-  get_param()
+  ebird_rel_param()
   expect_true(exists("date_real", envir = .GlobalEnv))
   expect_true(exists("date_currel", envir = .GlobalEnv))
   expect_true(exists("date_prevrel", envir = .GlobalEnv))
@@ -12,7 +12,7 @@ test_that("Basic params are saved to environment in default setting", {
 })
 
 test_that("Basic and extra params are saved to environment when extra == TRUE", {
-  get_param(extra = TRUE)
+  ebird_rel_param(extra = TRUE)
   expect_true(exists("date_real", envir = .GlobalEnv))
   expect_true(exists("date_currel", envir = .GlobalEnv))
   expect_true(exists("date_prevrel", envir = .GlobalEnv))
@@ -32,7 +32,7 @@ test_that("Basic and extra params are saved to environment when extra == TRUE", 
 })
 
 test_that("Output param objects are of appropriate classes", {
-  get_param(extra = TRUE)
+  ebird_rel_param(extra = TRUE)
   expect_true(class(date_real) == "Date")
   expect_true(class(date_currel) == "Date")
   expect_true(class(date_prevrel) == "Date")

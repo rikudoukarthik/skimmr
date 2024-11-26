@@ -5,13 +5,13 @@ test_that("Errors when params not loaded before", {
   remove_param()
   expect_error(unzip_ebd(dataset_str = "ebd_bkclau2_unv_smp_rel",
                          dir_name = test_path()),
-               "get_param()")
+               "ebird_rel_param()")
 
 })
 
 test_that("Errors when input dataset_str is incorrect", {
 
-  get_param(date_currel = "2024-07-01")
+  ebird_rel_param(date_currel = "2024-07-01")
   expect_error(unzip_ebd(dataset_str = "incorrect-str",
                          dir_name = test_path()),
                "Specified zip file of data does not exist")
@@ -20,7 +20,7 @@ test_that("Errors when input dataset_str is incorrect", {
 
 test_that("Errors when unzip_which is invalid", {
 
-  get_param(date_currel = "2024-07-01")
+  ebird_rel_param(date_currel = "2024-07-01")
   expect_error(unzip_ebd(dataset_str = "ebd_bkclau2_unv_smp_relJul-2024.zip",
                          unzip_which = "abc",
                          dir_name = test_path()),
@@ -30,7 +30,7 @@ test_that("Errors when unzip_which is invalid", {
 
 test_that("Does not error when all inputs correct and params loaded before", {
 
-  get_param(date_currel = "2024-07-01")
+  ebird_rel_param(date_currel = "2024-07-01")
   expect_no_error(unzip_ebd(dataset_str = "ebd_bkclau2_unv_smp_rel",
                             unzip_which = "ebd",
                             dir_name = test_path()))
@@ -39,7 +39,7 @@ test_that("Does not error when all inputs correct and params loaded before", {
 
 test_that("File exist check works", {
 
-  get_param(date_currel = "2024-07-01")
+  ebird_rel_param(date_currel = "2024-07-01")
   expect_message(unzip_ebd(dataset_str = "ebd_bkclau2_unv_smp_rel",
                            unzip_which = "ebd",
                            dir_name = test_path()),

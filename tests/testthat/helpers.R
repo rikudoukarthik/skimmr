@@ -1,4 +1,4 @@
-# To remove get_param() objects from global environment when testing---------------------
+# To remove ebird_rel_param() objects from global environment when testing---------------------
 
 remove_param <- function() {
 

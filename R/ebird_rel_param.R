@@ -11,10 +11,10 @@
 #' @export
 #'
 #' @examples
-#' get_param()
-#' get_param(extra = TRUE)
-#' get_param("2023-10-01")
-get_param <- function(date_real = NULL, date_currel = NULL, date_prevrel = NULL,
+#' ebird_rel_param()
+#' ebird_rel_param(extra = TRUE)
+#' ebird_rel_param("2023-10-01")
+ebird_rel_param <- function(date_real = NULL, date_currel = NULL, date_prevrel = NULL,
                       extra = FALSE) {
 
   # get starting points ---------------------------------------------------------------

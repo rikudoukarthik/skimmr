@@ -2,8 +2,8 @@
 
 export("%>%")
 export(cols_to_ebd)
+export(ebird_rel_param)
 export(filter_eligible)
-export(get_param)
 export(read.ebd)
 export(soib_skim)
 export(unzip_ebd)
