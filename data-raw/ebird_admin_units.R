@@ -24,7 +24,7 @@ list_districts <- purrr::map_df(ind_subcont,
   dplyr::mutate(STATE.CODE = stringr::str_sub(COUNTY.CODE, 1, 5))
 
 
-ebd_admin_units <- list_districts %>%
+ebird_admin_units <- list_districts %>%
   dplyr::left_join(list_states, by = "STATE.CODE") %>%
   dplyr::left_join(list_countries, by = "COUNTRY.CODE") %>%
   dplyr::relocate(dplyr::starts_with("COUNTRY"),
@@ -33,4 +33,4 @@ ebd_admin_units <- list_districts %>%
   arrange(COUNTY.CODE)
 
 
-usethis::use_data(ebd_admin_units, overwrite = TRUE)
+usethis::use_data(ebird_admin_units, overwrite = TRUE)
