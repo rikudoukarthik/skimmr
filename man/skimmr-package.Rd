@@ -8,6 +8,13 @@
 \description{
 Functions for various data sorting, processing and analysis tasks of citizen science practitioners using eBird data.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://rikudoukarthik.github.io/skimmr/}
+}
+
+}
 \author{
 \strong{Maintainer}: Karthik Thrikkadeeri \email{rikudoukarthik@gmail.com} (\href{https://orcid.org/0000-0003-2863-5879}{ORCID})
 
