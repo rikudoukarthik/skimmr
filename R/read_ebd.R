@@ -108,6 +108,7 @@ read.mydata <- function(path = "MyEBirdData.csv",
   cols_all <- names(mini_data)
 
 
+  # check that input column names are valid
   if (!identical(cols_sel, "all")) {
     if (!all(cols_sel %in% cols_all)) {
       stop(paste("Specified column name is invalid. Run read.ebd(., cols_print_only = TRUE) to see valid names.",
@@ -125,22 +126,22 @@ read.mydata <- function(path = "MyEBirdData.csv",
 
   } else {
 
-      data <- readr::read_csv(path,
-                              col_names = TRUE, quote = "",
-                              na = c("", " ", NA),
-                              show_col_types = FALSE) %>%
-        suppressWarnings() # suppress parsing warnings
+    data <- readr::read_csv(path,
+                            col_names = TRUE, quote = "",
+                            na = c("", " ", NA),
+                            show_col_types = FALSE) %>%
+      # change column name style if needed
+      {if (cols_style_ebd == TRUE) {
+        cols_to_ebd(.)
+      } else {
+        .
+      }} %>%
+      suppressWarnings() # suppress parsing warnings
 
-      if (!identical(cols_sel, "all")) {
-
-        data <- data %>%
-          {if (cols_style_ebd == TRUE) {
-            cols_to_ebd(.)
-          } else {
-            .
-          }} %>%
-          dplyr::select(dplyr::all_of(cols_sel))
-
+    # return only subset of columns
+    if (!identical(cols_sel, "all")) {
+      data <- data %>%
+        dplyr::select(dplyr::all_of(cols_sel))
     }
 
     return(data)

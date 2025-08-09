@@ -41,6 +41,12 @@ test_that("cols_style_ebd works", {
     )
   )
 
+  # same but when cols_print_only == FALSE
+  expect_contains(
+    names(read.mydata(test_path("MyEBirdData.csv"), cols_print_only = FALSE, cols_style_ebd = TRUE)),
+    c("SAMPLING.EVENT.IDENTIFIER", "COMMON.NAME")
+  )
+
 })
 
 test_that("cols_sel works", {
