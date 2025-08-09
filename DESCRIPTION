@@ -1,6 +1,6 @@
 Package: skimmr
 Title: Working with eBird data made easy
-Version: 0.0.0.9006
+Version: 0.0.0.9007
 Authors@R: c(
     person(given = "Karthik", family = "Thrikkadeeri", , 
            "rikudoukarthik@gmail.com", 
