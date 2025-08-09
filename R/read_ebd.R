@@ -95,7 +95,7 @@ read.mydata <- function(path = "MyEBirdData.csv",
                         cols_sel = "all", cols_print_only = FALSE, cols_style_ebd = FALSE) {
 
   mini_data <- readr::read_csv(path, n_max = 1,
-                               col_names = TRUE, quote = "",
+                               col_names = TRUE,
                                na = c("", " ", NA),
                                show_col_types = FALSE) %>%
     suppressWarnings() # suppress parsing warnings
@@ -127,7 +127,7 @@ read.mydata <- function(path = "MyEBirdData.csv",
   } else {
 
     data <- readr::read_csv(path,
-                            col_names = TRUE, quote = "",
+                            col_names = TRUE,
                             na = c("", " ", NA),
                             show_col_types = FALSE) %>%
       # change column name style if needed

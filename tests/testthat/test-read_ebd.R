@@ -114,3 +114,22 @@ test_that("error catch for invalid column name input works", {
 #   "EFFORT.DISTANCE.KM","NUMBER.OBSERVERS","ALL.SPECIES.REPORTED","GROUP.IDENTIFIER",
 #   "HAS.MEDIA","APPROVED","REVIEWED","TRIP.COMMENTS","SPECIES.COMMENTS","GROUP.ID",
 #   "YEAR","MONTH","DAY.M","M.YEAR","M.MONTH")
+
+
+test_that("Ensure no quotes/NA issues in reading data", {
+
+  # when cols like Location are parsed incorrectly, they get broken up into smaller
+  # pieces, and enter other cols. e.g., duration becomes character.
+  expect_true(class((
+    read.mydata(test_path("MyEBirdData.csv"),
+                cols_style_ebd = FALSE)
+  )$`Duration (Min)`) == "numeric",
+  label = "No parsing issue")
+
+  expect_true(class((
+    read.mydata(test_path("MyEBirdData.csv"),
+                cols_style_ebd = TRUE)
+  )$DURATION.MINUTES) == "numeric",
+  label = "No parsing issue")
+
+})
