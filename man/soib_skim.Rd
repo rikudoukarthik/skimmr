@@ -11,7 +11,7 @@ soib_skim(mask)
 }
 \value{
 A tibble. Please find info on descriptions of each variable in the
-source listed in the documentation for \code{soib}.
+source listed in the documentation for \link{soib}.
 }
 \description{
 Whereas \code{soib} is the latest State of India's Birds (SoIB) datasheet at the national level,

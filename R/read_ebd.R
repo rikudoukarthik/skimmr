@@ -89,6 +89,7 @@ read.ebd <- function(path, cols_sel = "all", cols_print_only = FALSE) {
 #' @format NULL
 #' @param cols_style_ebd logical; if `TRUE` (default), change column names in My Data to uppercase
 #'    and separated by period (COLUMN.STYLE), as in `read.ebd()`
+#' @export
 
 read.mydata <- function(path = "MyEBirdData.csv",
                         cols_sel = "all", cols_print_only = FALSE, cols_style_ebd = FALSE) {
