@@ -2,7 +2,7 @@ pandoc: 3.1.11
 pkgdown: 2.1.3
 pkgdown_sha: ~
 articles: {}
-last_built: 2025-08-09T14:54Z
+last_built: 2025-08-09T14:57Z
 urls:
   reference: https://rikudoukarthik.github.io/skimmr/reference
   article: https://rikudoukarthik.github.io/skimmr/articles
